@@ -3,11 +3,14 @@ apply plugin: 'io.fabric'
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
+apply from: "fabric.gradle"
 
 repositories {
     mavenCentral()
     maven { url 'https://maven.fabric.io/public' }
 }
+
+def releaseNotes = 'git log --pretty=format:"%s" --since "yesterday"'.execute([], project.rootDir).text.trim()
 
 android {
     compileSdkVersion 28
@@ -20,7 +23,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         // release notes
-        ext.betaDistributionReleaseNotes="Release Notes for this build."
+        ext.betaDistributionReleaseNotes=releaseNotes
 
         // add testers
         ext.betaDistributionEmails="benhur.souza@zoom.com.br"
@@ -31,7 +34,7 @@ android {
 
     signingConfigs {
         debugablerelease {
-            storeFile file("../test_debugable_release.keystore")
+            storeFile file("../FabricBeta.keystore")
             storePassword "123456"
             keyAlias "teste"
             keyPassword "123456"
@@ -42,6 +45,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debugablerelease
         }
     }
 }
