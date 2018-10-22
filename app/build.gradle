@@ -1,8 +1,13 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'io.fabric'
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://maven.fabric.io/public' }
+}
 
 android {
     compileSdkVersion 28
@@ -13,7 +18,26 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        // release notes
+        ext.betaDistributionReleaseNotes="Release Notes for this build."
+
+        // add testers
+        ext.betaDistributionEmails="benhur.souza@zoom.com.br"
+
+        // add group aliases
+//        ext.betaDistributionGroupAliases="my-best-testers"
     }
+
+    signingConfigs {
+        debugablerelease {
+            storeFile file("../test_debugable_release.keystore")
+            storePassword "123456"
+            keyAlias "teste"
+            keyPassword "123456"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -30,4 +54,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    compile('com.crashlytics.sdk.android:crashlytics:2.9.5@aar') {
+        transitive = true;
+    }
 }
