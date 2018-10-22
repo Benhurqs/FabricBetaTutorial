@@ -1,6 +1,11 @@
 
-            Data: 22-10-2018 15:44:34
-            Versão: 1.0(1)
-            
-            Testando fluxo geral do Beta
-            
+Data: 22-10-2018 16:47:49
+Versão: 3.1(3)
+
+Nova versão
+
+Logs: 
+-"Created Tasks"
+-"Add Fabric"
+-"init project"
+-"first commit"

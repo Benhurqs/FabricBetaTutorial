@@ -1,33 +1,14 @@
-import java.text.SimpleDateFormat
+
 
 def GROUP_NAME = "fabric distribution"
 task buildReleaseCandidate() {
     group = GROUP_NAME
     dependsOn 'clean'
     finalizedBy 'assembleRelease'
-    doLast {
-        def description = 'Nova versão'
-        if(project.hasProperty('desc')){
-            description = desc
-        }
-
-        createReleaseNotes(description)
-    }
 }
 
 task sendReleaseCandidateToCrashlytics() {
     group = GROUP_NAME
     dependsOn buildReleaseCandidate
     finalizedBy 'crashlyticsUploadDistributionRelease'
-}
-
-def createReleaseNotes(descripition)  {
-
-        new File("$projectDir/release_notes.txt").text = """
-            Data: ${new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date())}
-            Versão: ${android.defaultConfig.versionName}(${android.defaultConfig.versionCode})
-            
-            $descripition
-            """
-
 }
