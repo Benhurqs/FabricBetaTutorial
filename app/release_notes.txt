@@ -1,11 +1,9 @@
 
-Data: 22-10-2018 16:47:49
-Versão: 3.1(3)
+Data: 22-10-2018 16:57:23
+Versão: 3.5.9(4)
 
 Nova versão
 
 Logs: 
+-"Create releaseNotes"
 -"Created Tasks"
--"Add Fabric"
--"init project"
--"first commit"

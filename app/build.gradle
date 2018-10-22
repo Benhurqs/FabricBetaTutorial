@@ -20,8 +20,8 @@ android {
         applicationId "com.benhurqs.fabricbetatutorial"
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 3
-        versionName "3.1"
+        versionCode 4
+        versionName "3.5.9"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         // release notes
@@ -68,7 +68,7 @@ dependencies {
 
 def createReleaseNotes() {
 
-    def logs = 'git log --pretty=format:-"%s" --since "yesterday"'.execute([], project.rootDir).text.trim()
+    def logs = 'git log origin/master..origin/develop --pretty=format:-"%s"'.execute([], project.rootDir).text.trim()
     def description = 'Nova versão'
     if (project.hasProperty('desc')) {
         description = desc
