@@ -1,9 +1,10 @@
 
-Data: 22-10-2018 16:57:23
+Data: 22-10-2018 16:58:13
 Versão: 3.5.9(4)
 
-Nova versão
+Testando fluxo Completo
 
 Logs: 
+-"Create change log"
 -"Create releaseNotes"
 -"Created Tasks"
